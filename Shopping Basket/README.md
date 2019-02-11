@@ -5,7 +5,7 @@ The program accept a list of items in the basket and output the subtotal, the sp
 ### Assumptions Made:
 List of items, price and offers are provided along with configuration as JSON
 
-### Dependencied:
+### Dependencies:
 * log4j-1.2.17.jar
 * gson-2.6.2.jar
 
@@ -17,7 +17,7 @@ List of items, price and offers are provided along with configuration as JSON
 
  ### Sample Input and Responses
  
- ###### java -cp /Users/xyz/jar/log4j-1.2.17.jar:/Users/xyz/jar/gson-2.6.2.jar:/Users/xyz/jar/shoppingbasket.jar com.shoppingbasket.main.EntryPoint PriceBasket Soup Soup Milk Bread Apples
+<br /> java -cp /Users/xyz/jar/log4j-1.2.17.jar:/Users/xyz/jar/gson-2.6.2.jar:/Users/xyz/jar/shoppingbasket.jar com.shoppingbasket.main.EntryPoint PriceBasket Soup Soup Milk Bread Apples
 
 <br /> Subtotal: £4.4
 <br /> Bread 50% off: -40p
