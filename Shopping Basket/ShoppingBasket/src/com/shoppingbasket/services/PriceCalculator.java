@@ -11,7 +11,6 @@ import com.shoppingbasket.dto.Item;
 import com.shoppingbasket.dto.ItemPurchaseOrders;
 import com.shoppingbasket.dto.Offer;
 import com.shoppingbasket.util.ConfigLoader;
-import com.shoppingbasket.util.PriceCalculatorUtils;
 
 /**
  * 
@@ -64,7 +63,9 @@ public class PriceCalculator {
 		bill.setItemPurchaseOrderMap(itemPurchaseOrderMap);
 		bill.setSubTotal(subTotal);
 
-		this.applyDiscount(bill);
+		double discount = this.applyDiscount(bill.getItemPurchaseOrderMap());
+
+		bill.setTotal(bill.getSubTotal() - discount);
 
 		return bill;
 	}
@@ -77,10 +78,10 @@ public class PriceCalculator {
 	 * @param Bill object
 	 * 
 	 */
-	public void applyDiscount(Bill bill) {
-		Map<String, ItemPurchaseOrders> purchaseOrderMap = bill.getItemPurchaseOrderMap();
+	public double applyDiscount(Map<String, ItemPurchaseOrders> purchaseOrderMap) {
 
-		PriceCalculatorUtils priceCalcUtils = new PriceCalculatorUtils();
+		double discount = 0.0;
+		PriceCalculatorHelper priceCalcUtils = new PriceCalculatorHelper();
 
 		for (Entry<String, ItemPurchaseOrders> entry : purchaseOrderMap.entrySet()) {
 
@@ -123,14 +124,14 @@ public class PriceCalculator {
 					logger.debug("Item: " + discountedItemOrder.getItem().getName() + ", Discount: "
 							+ discountedItemOrder.getDiscount());
 
-					bill.setDiscountAmount(bill.getDiscountAmount() + discountedItemOrder.getDiscount());
+					discount += discountedItemOrder.getDiscount();
 				}
 
 			}
 
 		}
 
-		bill.setTotal(bill.getSubTotal() - bill.getDiscountAmount());
+		return discount;
 
 	}
 

@@ -1,4 +1,4 @@
-package com.shoppingbasket.util;
+package com.shoppingbasket.services;
 
 import java.time.LocalDate;
 
@@ -11,8 +11,8 @@ import com.shoppingbasket.dto.Offer;
  * Class which assists PriceCalculator
  *
  */
-public class PriceCalculatorUtils {
-	final static Logger logger = Logger.getLogger(PriceCalculatorUtils.class);
+public class PriceCalculatorHelper {
+	final static Logger logger = Logger.getLogger(PriceCalculatorHelper.class);
 
 	/**
 	 * Method to check preset date is within a certain date range
