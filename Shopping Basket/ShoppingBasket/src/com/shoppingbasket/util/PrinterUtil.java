@@ -25,18 +25,17 @@ public class PrinterUtil {
 			Formatter formatter = null;
 			if (bill.getDiscountAmount() > 0) {
 				formatter = new BillWithDiscountFormatter();
-			}else {
+			} else {
 				formatter = new BillWithoutDiscountFormatter();
 			}
-			
+
 			String reciept = formatter.formatBill(bill);
 			System.out.println(reciept);
-		}
-		else {
+		} else {
 			logger.error("Bill calculation failure");
 			throw new Exception("Bill calculation failure");
 		}
-		
+
 	}
-	
+
 }

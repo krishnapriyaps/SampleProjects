@@ -19,18 +19,19 @@ public class JSONOfferPolicyLoader implements OfferPolicyLoader<String> {
 	 * Method to load item - offers information from JSON String
 	 * 
 	 * @param Object with source information
-	 * @return Map<String,Offer> with item name as key and Offer information as object
+	 * @return Map<String,Offer> with item name as key and Offer information as
+	 *         object
 	 */
 	@Override
-	public Map<String,Offer> loadItem(String sourceInfo) {
+	public Map<String, Offer> loadItem(String sourceInfo) {
 		ArrayList<Offer> offerPolicys = new Gson().fromJson(sourceInfo, new TypeToken<List<Offer>>() {
 		}.getType());
-		
-		Map<String,Offer> offerItemMap = new HashMap<String,Offer>();
-		for(Offer offerPolicy: offerPolicys) {
+
+		Map<String, Offer> offerItemMap = new HashMap<String, Offer>();
+		for (Offer offerPolicy : offerPolicys) {
 			offerItemMap.put(offerPolicy.getOfferOnItemName().toLowerCase(), offerPolicy);
 		}
-		
+
 		return offerItemMap;
 	}
 

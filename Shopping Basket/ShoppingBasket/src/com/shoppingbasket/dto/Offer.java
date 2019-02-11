@@ -13,8 +13,8 @@ public class Offer {
 		this(offerOnItemName, offerOnItemQuantity, null, null, null, 0, discountPercentage);
 	}
 
-	public Offer(String offerOnItemName, int offerOnItemQuantity, LocalDate offerStartDate,
-			LocalDate offerEndDate, String discountedItemName, int discountedItemQuantity, int discountPercentage) {
+	public Offer(String offerOnItemName, int offerOnItemQuantity, LocalDate offerStartDate, LocalDate offerEndDate,
+			String discountedItemName, int discountedItemQuantity, int discountPercentage) {
 		this.offerOnItemName = offerOnItemName;
 		this.offerOnItemQuantity = offerOnItemQuantity;
 		this.offerStartDate = offerStartDate;

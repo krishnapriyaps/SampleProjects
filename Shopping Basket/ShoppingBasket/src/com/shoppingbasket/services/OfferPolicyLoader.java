@@ -9,12 +9,13 @@ import com.shoppingbasket.dto.Offer;
  * 
  */
 public interface OfferPolicyLoader<T> {
-	
+
 	/**
 	 * Method to load item - offers information from source
 	 * 
 	 * @param Object with source information
-	 * @return Map<String,Offer> with item name as key and Offer information as object
+	 * @return Map<String,Offer> with item name as key and Offer information as
+	 *         object
 	 */
-	public Map<String,Offer> loadItem(T sourceInfo);
+	public Map<String, Offer> loadItem(T sourceInfo);
 }

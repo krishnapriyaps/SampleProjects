@@ -10,13 +10,14 @@ import com.google.gson.reflect.TypeToken;
 import com.shoppingbasket.dto.Item;
 
 /**
- * Class to load item - price information from JSON Data.
- * Class implements ItemPriceLoader
+ * Class to load item - price information from JSON Data. Class implements
+ * ItemPriceLoader
+ * 
  * @see ItemPriceLoader
  */
 
 public class JSONItemPriceLoader implements ItemPriceLoader<String> {
-	
+
 	/**
 	 * Method to load item - price information from JSON string data
 	 * 
@@ -24,16 +25,16 @@ public class JSONItemPriceLoader implements ItemPriceLoader<String> {
 	 * @return Map<String,Item> with item name as key and Item information as object
 	 */
 	@Override
-	public Map<String,Item> loadItem(String sourceInfo) {
+	public Map<String, Item> loadItem(String sourceInfo) {
 
 		ArrayList<Item> items = new Gson().fromJson(sourceInfo, new TypeToken<List<Item>>() {
 		}.getType());
 
-		Map<String,Item> itemPriceMap = new HashMap<String, Item>();
-		for(Item item: items) {
+		Map<String, Item> itemPriceMap = new HashMap<String, Item>();
+		for (Item item : items) {
 			itemPriceMap.put(item.getName().toLowerCase(), item);
 		}
-		
+
 		return itemPriceMap;
 	}
 

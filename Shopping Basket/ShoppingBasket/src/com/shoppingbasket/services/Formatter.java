@@ -1,5 +1,7 @@
 package com.shoppingbasket.services;
 
+import java.text.DecimalFormat;
+
 import org.apache.log4j.Logger;
 
 import com.shoppingbasket.dto.Bill;
@@ -46,8 +48,8 @@ public abstract class Formatter {
 		value = value * 100;
 		value = Math.round(value);
 		value = value / 100;
-
-		return Double.toString(value);
+		DecimalFormat df = new DecimalFormat("#.00");
+	    return df.format(value);
 	}
 
 	/**
@@ -69,7 +71,7 @@ public abstract class Formatter {
 	 * Public method to delete a String from StringBuilder
 	 * 
 	 * @param StringBuilder object
-	 * @param String to be deleted
+	 * @param String        to be deleted
 	 * 
 	 */
 	public void deleteString(StringBuilder sb, String stringToDelete) {
@@ -80,8 +82,8 @@ public abstract class Formatter {
 	 * Public method to replace a String with a new String in a StringBuilder
 	 * 
 	 * @param StringBuilder object
-	 * @param String to be deleted
-	 * @param String to be inserted
+	 * @param String        to be deleted
+	 * @param String        to be inserted
 	 * 
 	 */
 	public void replaceString(StringBuilder sb, String oldString, String newString) {

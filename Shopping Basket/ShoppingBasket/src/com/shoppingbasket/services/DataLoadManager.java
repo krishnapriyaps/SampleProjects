@@ -11,7 +11,7 @@ import com.shoppingbasket.util.Constants;
  *
  */
 public class DataLoadManager {
-	
+
 	private final static Logger logger = Logger.getLogger(DataLoadManager.class);
 
 	private static final DataLoadManager manager = new DataLoadManager();
@@ -36,7 +36,7 @@ public class DataLoadManager {
 		if (sourceType.equalsIgnoreCase(Constants.JSON_TAG)) {
 			priceloader = new JSONItemPriceLoader();
 		} else {
-			logger.error("Unimpremented source type detected :"+ sourceType);
+			logger.error("Unimpremented source type detected :" + sourceType);
 			throw new Exception("Source Type not implemented");
 		}
 		return priceloader;
@@ -55,7 +55,7 @@ public class DataLoadManager {
 		if (sourceType.equalsIgnoreCase(Constants.JSON_TAG)) {
 			offerPolicyLoader = new JSONOfferPolicyLoader();
 		} else {
-			logger.error("Unimpremented source type detected :"+ sourceType);
+			logger.error("Unimpremented source type detected :" + sourceType);
 			throw new Exception("Source Type not implemented");
 		}
 		return offerPolicyLoader;

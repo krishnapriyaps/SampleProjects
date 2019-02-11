@@ -16,7 +16,7 @@ import com.shoppingbasket.util.Constants;
  *
  */
 public class BillWithDiscountFormatter extends Formatter {
-	
+
 	private final static Logger logger = Logger.getLogger(BillWithDiscountFormatter.class);
 
 	/**
@@ -35,7 +35,7 @@ public class BillWithDiscountFormatter extends Formatter {
 		super.replaceString(sb, Constants.INDIVIDUAL_DISCOUNT_TAG, individualDiscounts);
 		super.replaceString(sb, Constants.SUBTOTAL_TAG, super.formatPrice(bill.getSubTotal()));
 		super.replaceString(sb, Constants.TOTAL_TAG, super.formatPrice(bill.getTotal()));
-		logger.debug("Formatted response: "+sb.toString());
+		logger.debug("Formatted response: " + sb.toString());
 		return sb.toString();
 	}
 

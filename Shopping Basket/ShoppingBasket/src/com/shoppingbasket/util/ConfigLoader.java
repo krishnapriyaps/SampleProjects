@@ -17,7 +17,7 @@ import com.shoppingbasket.services.DataLoadManager;
  * 
  */
 public final class ConfigLoader {
-	
+
 	private final static Logger logger = Logger.getLogger(ConfigLoader.class);
 
 	private static final ConfigLoader config = new ConfigLoader();
@@ -71,7 +71,7 @@ public final class ConfigLoader {
 	}
 
 	/**
-	 * Method to read data from property file 
+	 * Method to read data from property file
 	 * 
 	 */
 	private static Properties getProperties() {

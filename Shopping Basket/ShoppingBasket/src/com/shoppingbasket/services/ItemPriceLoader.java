@@ -15,5 +15,5 @@ public interface ItemPriceLoader<T> {
 	 * @param Object with source information
 	 * @return Map<String,Item> with item name as key and Item information as object
 	 */
-	public Map<String,Item> loadItem(T sourceInfo);
+	public Map<String, Item> loadItem(T sourceInfo);
 }

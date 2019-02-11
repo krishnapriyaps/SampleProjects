@@ -16,7 +16,7 @@ import com.shoppingbasket.util.Constants;
 public class BillWithoutDiscountFormatter extends Formatter {
 
 	private final static Logger logger = Logger.getLogger(BillWithoutDiscountFormatter.class);
-	
+
 	/**
 	 * Generate formated response for a Bill which does not have discount
 	 * 
@@ -29,7 +29,7 @@ public class BillWithoutDiscountFormatter extends Formatter {
 		StringBuilder sb = new StringBuilder(Constants.BILL_WITHOUT_DISCOUNT_TEMPLETE);
 		super.replaceString(sb, Constants.SUBTOTAL_TAG, super.formatPrice(bill.getSubTotal()));
 		super.replaceString(sb, Constants.TOTAL_TAG, super.formatPrice(bill.getTotal()));
-		logger.debug("Formatted response: "+sb.toString());
+		logger.debug("Formatted response: " + sb.toString());
 		return sb.toString();
 	}
 

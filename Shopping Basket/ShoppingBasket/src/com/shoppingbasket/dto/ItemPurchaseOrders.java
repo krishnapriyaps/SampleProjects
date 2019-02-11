@@ -9,11 +9,11 @@ public class ItemPurchaseOrders {
 	private Item item = null;
 
 	private int orderQuantity = 0;
-	
+
 	private double discount = 0.0;
 
 	private int discountPercentage = 0;
-	
+
 	public Item getItem() {
 		return item;
 	}
@@ -37,7 +37,7 @@ public class ItemPurchaseOrders {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
-	
+
 	public int getDiscountPercentage() {
 		return discountPercentage;
 	}

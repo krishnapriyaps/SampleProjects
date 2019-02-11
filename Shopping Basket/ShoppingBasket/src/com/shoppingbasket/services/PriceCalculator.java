@@ -1,6 +1,5 @@
 package com.shoppingbasket.services;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -51,7 +50,8 @@ public class PriceCalculator {
 					subTotal = subTotal + item.getPrice();
 					logger.debug("subTotal : " + subTotal);
 				} else {
-					itemPurchaseOrderMap.get(itemName).setOrderQuantity(itemPurchaseOrderMap.get(itemName).getOrderQuantity() + 1);
+					itemPurchaseOrderMap.get(itemName)
+							.setOrderQuantity(itemPurchaseOrderMap.get(itemName).getOrderQuantity() + 1);
 					subTotal = subTotal + itemPurchaseOrderMap.get(itemName).getItem().getPrice();
 				}
 			} else {
@@ -70,16 +70,18 @@ public class PriceCalculator {
 	}
 
 	/**
-	 * Method to calculate and update bill object with applicable discounts
+	 * Method check whether offer is applicable for each item in the purchase order,
+	 * Find out the number items the offer applies on and calculate and update bill
+	 * object with applicable discounts
 	 *
 	 * @param Bill object
 	 * 
 	 */
 	public void applyDiscount(Bill bill) {
 		Map<String, ItemPurchaseOrders> purchaseOrderMap = bill.getItemPurchaseOrderMap();
-		
+
 		PriceCalculatorUtils priceCalcUtils = new PriceCalculatorUtils();
-		
+
 		for (Entry<String, ItemPurchaseOrders> entry : purchaseOrderMap.entrySet()) {
 
 			if (ConfigLoader.getConfig().getItemOfferMap().containsKey(entry.getKey())) {
@@ -90,45 +92,37 @@ public class PriceCalculator {
 
 				logger.debug("Offer Valable for :" + itemPurchaseOrders.getItem().getName());
 
-				// Check offer validity
-				boolean isOfferValid = priceCalcUtils.checkDateWithRange(offer.getOfferStartDate(), offer.getOfferEndDate());
+				boolean isOfferValid = priceCalcUtils.checkDateWithRange(offer.getOfferStartDate(),
+						offer.getOfferEndDate());
 
-				// Check whether purchase order has enough number of order for the offer to be
-				// valid
-				boolean offerQuantityCriteraFlag = priceCalcUtils.checkQunatityRequirment(offer, itemPurchaseOrders) ;
+				boolean offerQuantityCriteraFlag = priceCalcUtils.checkQunatityRequirment(offer, itemPurchaseOrders);
 
 				if (offerQuantityCriteraFlag) {
 					offer.setDiscountedItemQuantity(priceCalcUtils.maximumItemsOnOffer(offer, itemPurchaseOrders));
 				}
 
-				// find discounted item name
 				String discountedItemName = offer.getDiscountedItemName() != null ? offer.getDiscountedItemName()
 						: itemPurchaseOrders.getItem().getName();
-				discountedItemName = discountedItemName.toLowerCase();
 
-
-				// Calculates discount if offer is applicable and the the discounted item in
-				// present in purchase order
-				if (isOfferValid && offerQuantityCriteraFlag && purchaseOrderMap.containsKey(discountedItemName)) {
+				if (isOfferValid && offerQuantityCriteraFlag
+						&& purchaseOrderMap.containsKey(discountedItemName.toLowerCase())) {
 
 					ItemPurchaseOrders discountedItemOrder = null;
 					if (itemPurchaseOrders.getItem().getName().equalsIgnoreCase(discountedItemName)) {
 						discountedItemOrder = itemPurchaseOrders;
 					} else {
-						discountedItemOrder = purchaseOrderMap.get(discountedItemName);
+						discountedItemOrder = purchaseOrderMap.get(discountedItemName.toLowerCase());
 					}
 
 					int discountQuantity = priceCalcUtils.actualItemsOnOffer(offer, discountedItemOrder);
 
-					// Set individual discount
 					discountedItemOrder.setDiscount(discountedItemOrder.getItem().getPrice() * discountQuantity
 							* offer.getDiscountPercentage() / 100);
-					
+
 					discountedItemOrder.setDiscountPercentage(offer.getDiscountPercentage());
 					logger.debug("Item: " + discountedItemOrder.getItem().getName() + ", Discount: "
 							+ discountedItemOrder.getDiscount());
-					
-					// Update bill object
+
 					bill.setDiscountAmount(bill.getDiscountAmount() + discountedItemOrder.getDiscount());
 				}
 

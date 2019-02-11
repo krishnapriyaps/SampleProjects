@@ -7,10 +7,6 @@ package com.shoppingbasket.dto;
  */
 public class Item {
 
-	private String name = null;
-
-	private String measure = null;
-
 	public Item(String name, String measure, double price) {
 		super();
 		this.name = name;
@@ -18,6 +14,10 @@ public class Item {
 		this.price = price;
 	}
 
+	private String name = null;
+
+	private String measure = null;
+	
 	private double price = 0l;
 
 	public String getName() {

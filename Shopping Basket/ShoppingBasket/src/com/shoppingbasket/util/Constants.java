@@ -35,7 +35,7 @@ public class Constants {
 	public static final String BILL_WITHOUT_DISCOUNT_TEMPLETE = "Subtotal: <subtotal>\n"
 			+ "(No offers available)\nTotal price: <total>";
 
-	public static final String BILL_WITH_DISCOUNT_TEMPLETE = "Subtotal: <subtotal>\n<individual_discounts>\nTotal: <total>";
+	public static final String BILL_WITH_DISCOUNT_TEMPLETE = "Subtotal: <subtotal>\n<individual_discounts>Total: <total>";
 
 	public static final String DISCOUNT_INDIVIDUAL_TEMPLETE = "<item> <percentage>% off: -­<discount>\n";
 
