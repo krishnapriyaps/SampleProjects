@@ -13,19 +13,31 @@ The program accept a list of items in the basket and output the subtotal, the sp
 * To build jar: 
     * Install maven, refer <a>https://maven.apache.org/install.html</a>
     * Git clone this project or Download this project to local directory. Let's assume `<local-path>` be the local path there you place the project.
-    * Run command : `mvn clean package` , in `<local-path>SampleProjects/Shopping_Basket/ShoppingBasket` directory where `pom.xml` file is present.
+    * In command line change directory to `<local-path>SampleProjects/Shopping_Basket/ShoppingBasket` directory where `pom.xml` file is present.
+    * Run command : `mvn clean package` 
     * Path of Executable java jar will be: 
-    `<local-path>/SampleProjects/Shopping_Basket/ShoppingBasket/target/shoppingbasket.jar'
+    `target/shoppingbasket.jar'
      
 * Main Class : com.shoppingbasket.main.EntryPoint
-* Command to run the project : 
-  `java -jar <git-path>/SampleProjects/Shopping_Basket/ShoppingBasket/target/shoppingbasket.jar PriceBasket item1 item2 item3 ...`
+* Command to run application - stay in `<local-path>SampleProjects/Shopping_Basket/ShoppingBasket` directory and run command - 
+  `java -jar target/shoppingbasket.jar PriceBasket item1 item2 item3 ...`
 
  ### Sample Input and Responses
  
-<br /> java -jar /Users/vijaybhaskar1/Desktop/krishna/GitVerify/SampleProjects/Shopping_Basket/ShoppingBasket/target/shoppingbasket.jar PriceBasket Soup Soup Milk Bread Apples
+```
+java -jar target/shoppingbasket.jar PriceBasket Soup Soup Milk Bread Apples
+Subtotal: £4.40
+Bread 50% off: -40p
+Apples 10% off: -10p
+Total: £3.90
 
-<br /> Subtotal: £4.40
-<br /> Bread 50% off: -40p
-<br /> Apples 10% off: -10p
-<br /> Total: £3.90
+java -jar target/shoppingbasket.jar PriceBasket Soup Milk Bread Apples
+Subtotal: £3.75
+Apples 10% off: -10p
+Total: £3.65 
+
+java -jar target/shoppingbasket.jar PriceBasket Soup Milk Bread Bread
+Subtotal: £3.55
+(No offers available)
+Total price: £3.55
+```
