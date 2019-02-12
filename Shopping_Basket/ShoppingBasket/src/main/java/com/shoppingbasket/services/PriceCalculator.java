@@ -66,7 +66,7 @@ public class PriceCalculator {
 		double discount = this.applyDiscount(bill.getItemPurchaseOrderMap());
 
 		bill.setTotal(bill.getSubTotal() - discount);
-
+		bill.setDiscountAmount(discount);
 		return bill;
 	}
 
